@@ -3,6 +3,7 @@ package com.zn.ticketreservationsystem.dmoain.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * 订单Entity
@@ -18,6 +19,7 @@ public class Ticket {
      * 订单ID
      */
     @Id
+    @Column(length = 15)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
@@ -29,6 +31,7 @@ public class Ticket {
     /**
      * 航班id
      */
+    @Column(length = 6)
     private String fightId;
 
     /**
@@ -50,7 +53,7 @@ public class Ticket {
      * 订单创建时间
      */
     @Temporal(TemporalType.TIMESTAMP)
-    private Data createTime;
+    private Date createTime;
 
 
 }

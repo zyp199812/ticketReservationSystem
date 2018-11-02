@@ -20,7 +20,7 @@ public class Fight {
      * 航班号
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(length = 6)
     private String fightNumber;
 
     /**
