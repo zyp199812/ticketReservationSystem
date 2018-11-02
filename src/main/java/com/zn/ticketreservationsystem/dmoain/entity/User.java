@@ -2,9 +2,7 @@ package com.zn.ticketreservationsystem.dmoain.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * 用户Entity
@@ -17,7 +15,7 @@ import javax.persistence.Id;
 @Entity
 public class User {
     @Id
-    @Column(length = 50)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     private String name;
@@ -26,10 +24,17 @@ public class User {
 
     private String password;
 
+    /**
+     * 支付密码
+     */
     private String payPsd;
 
     private String sex;
 
+    /**
+     * 伪session 用于验证是否已登录
+     * 通过随机数和MD5生成一串数字充当session
+     */
     private String islogin;
 
 }

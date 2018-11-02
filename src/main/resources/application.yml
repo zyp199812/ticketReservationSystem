@@ -1,6 +1,10 @@
 
 
 spring:
+  devtools:
+    restart:
+      poll-interval: 3s
+      additional-paths: ./src/main/com/zn
   datasource:
     username: root
     password: root
@@ -10,3 +14,4 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true

@@ -2,8 +2,7 @@ package com.zn.ticketreservationsystem.dmoain.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * 飞机Entity
@@ -16,10 +15,24 @@ import javax.persistence.Id;
 @Entity
 public class Aircraft {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    private int BusinessClassNum;
+    /**
+     * 所属航空公司
+     * 使用二字代码
+     */
+    @Column(length = 2)
+    private String from;
 
-    private int EconomyClassNum;
+    /**
+     * 商务舱座位数
+     */
+    private int businessClassNum;
+
+    /**
+     * 经济舱座位数
+     */
+    private int economyClassNum;
 
 }
