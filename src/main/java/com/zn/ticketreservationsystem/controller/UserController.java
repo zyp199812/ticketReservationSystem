@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Author: ZN_nick
- * @Date: 2018/11/2 16:53
+ * @Date: 2018/11/3 11:51
  * @Version 1.0
  */
 @Controller
-public class HelloWorldController {
-    @GetMapping("/aa")
+@RequestMapping("/user")
+public class UserController {
+    @GetMapping("/test")
     @ResponseBody
-    public String hello(){
-        return "helloWorld";
+    public String test(){
+        return "etests";
     }
 }

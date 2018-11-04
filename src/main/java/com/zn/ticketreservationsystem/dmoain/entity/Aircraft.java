@@ -16,8 +16,8 @@ import javax.persistence.*;
 public class Aircraft {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length = 10)
-    private String id;
+    @Column(length = 6)
+    private int id;
 
     /**
      * 所属航空公司
@@ -25,6 +25,8 @@ public class Aircraft {
      */
     @Column(length = 2)
     private String fromCompany;
+
+    private String aircraftType;
 
     /**
      * 商务舱座位数

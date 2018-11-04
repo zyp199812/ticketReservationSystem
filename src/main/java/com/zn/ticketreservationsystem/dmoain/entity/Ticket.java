@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * 订单Entity
+ *
  * @Author: ZN_nick
  * @Date: 2018/11/2 18:31
  * @Version 1.0
@@ -19,20 +20,23 @@ public class Ticket {
      * 订单ID
      */
     @Id
-    @Column(length = 15)
+    @Column(length = 18)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private int id;
 
     /**
      * 用户id
      */
-    private String userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private User user;
 
     /**
      * 航班id
      */
-    @Column(length = 6)
-    private String fightId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Fight fightId;
 
     /**
      * 座位信息
@@ -47,6 +51,7 @@ public class Ticket {
     /**
      * 关联订单id
      */
+    @Column(length = 18)
     private String ticketId;
 
     /**

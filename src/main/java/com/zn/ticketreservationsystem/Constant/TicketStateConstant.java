@@ -1,4 +1,4 @@
-package com.zn.ticketreservationsystem.conf;
+package com.zn.ticketreservationsystem.Constant;
 
 /**
  * 订单状态
@@ -7,7 +7,7 @@ package com.zn.ticketreservationsystem.conf;
  * @Date: 2018/11/2 18:53
  * @Version 1.0
  */
-public interface TicketState {
+public interface TicketStateConstant {
     /**
      * 未支付
      */

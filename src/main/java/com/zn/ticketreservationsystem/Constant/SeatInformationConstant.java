@@ -1,4 +1,4 @@
-package com.zn.ticketreservationsystem.conf;
+package com.zn.ticketreservationsystem.Constant;
 
 /**
  *
@@ -6,7 +6,7 @@ package com.zn.ticketreservationsystem.conf;
  * @Date: 2018/11/2 18:47
  * @Version 1.0
  */
-public interface SeatInformation {
+public interface SeatInformationConstant {
     /**
      * 商务舱
      */
