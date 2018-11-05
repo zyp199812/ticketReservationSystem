@@ -31,23 +31,22 @@ public class BaseController {
 
     @PostMapping("/login")
     @ResponseBody
-    public String login(String userId, String password, HttpServletRequest request){
+    public String login(String userId, String password){
 
         try {
             int id;
             id = Integer.parseInt(userId);
             User user = baseService.findUserById(id);
             if (user.getPassword().equals(password)){
-                HttpSession session = request.getSession();
-                session.setAttribute("userId", id);
-                return "登录成功";
+                user.setLogin(true);
+                baseService.save(user);
+
             }
-
-
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            return "账号或密码错误";
         }
-        return "账号或密码错误";
+        return "登录成功";
 
     }
 
@@ -63,5 +62,22 @@ public class BaseController {
         baseService.save(user);
         return "成功";
 
+    }
+
+    @PostMapping("/quit")
+    @ResponseBody
+    public String quit(String userId){
+        try {
+            int id;
+            id = Integer.parseInt(userId);
+            User user = baseService.findUserById(id);
+            user.setLogin(false);
+            baseService.save(user);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "发生未知错误，请与管理员联系";
+        }
+        return "退出成功";
     }
 }

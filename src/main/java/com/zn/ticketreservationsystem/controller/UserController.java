@@ -1,5 +1,8 @@
 package com.zn.ticketreservationsystem.controller;
 
+import com.zn.ticketreservationsystem.dmoain.entity.User;
+import com.zn.ticketreservationsystem.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,16 +17,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/test")
     @ResponseBody
     public String test(){
         return "etests";
     }
 
-    @PostMapping("/updata")
+    @PostMapping("/update")
     @ResponseBody
-    public String update(String name,String nickName,String password,String payPsd,String sex){
-        // TODO: 2018/11/5 更新个人信息 先将session和拦截器部分修复
-        return "修改成功";
+    public String update(String userId,String name,String nickName,String password,String payPsd,String sex){
+        int id;
+        id = Integer.parseInt(userId);
+        User user = userService.findUserById(id);
+        if (user.isLogin()){
+            user.setName(name);
+            user.setNickName(nickName);
+            user.setPassword(password);
+            user.setPayPsd(payPsd);
+            user.setSex(sex);
+            userService.save(user);
+            return "修改成功";
+        }
+        return "没有权限,请登录后再试";
     }
 }
