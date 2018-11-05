@@ -32,6 +32,8 @@ public class User {
 
     private String sex;
 
+
+
 //    /**
 //     * 伪session 用于验证是否已登录
 //     * 通过随机数和MD5生成一串数字充当session
