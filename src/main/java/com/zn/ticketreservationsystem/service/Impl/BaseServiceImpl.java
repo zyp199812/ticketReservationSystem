@@ -20,4 +20,9 @@ public class BaseServiceImpl implements BaseService {
     public User findUserById(int id) {
         return userRepository.findUserById(id);
     }
+
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
 }

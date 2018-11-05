@@ -12,6 +12,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Version 1.0
  */
 public interface UserRepository extends JpaRepository<User,Integer> {
+    /**
+     *  根据用户id进行查询
+     * @param userId
+     * @return User
+     */
     User findUserById(int userId);
+
 
 }

@@ -17,9 +17,16 @@ import java.util.Date;
 @Entity
 public class Fight {
     /**
-     * 航班号
+     * id
      */
     @Id
+    @Column(length = 10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int Id;
+
+    /**
+     * 航班号
+     */
     @Column(length = 6)
     private String fightNumber;
 

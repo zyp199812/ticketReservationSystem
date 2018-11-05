@@ -36,7 +36,7 @@ public class Ticket {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    private Fight fightId;
+    private Fight fight;
 
     /**
      * 座位信息

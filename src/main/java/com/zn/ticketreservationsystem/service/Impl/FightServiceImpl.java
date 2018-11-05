@@ -6,6 +6,7 @@ import com.zn.ticketreservationsystem.service.FightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,5 +22,16 @@ public class FightServiceImpl implements FightService {
     public List<Fight> findFightByairPort(String departureAirport, String arrivalAirport) {
         return fightRepository.findByDepartureAirportAndArrivalAirport(departureAirport, arrivalAirport);
 
+
+    }
+
+    @Override
+    public List<Fight> findByTime(Date beginTime, Date endTime) {
+        return fightRepository.findByDepartureTimeBetween(beginTime, endTime);
+    }
+
+    @Override
+    public List<Fight> findByFightNumber(String fightNumber) {
+        return fightRepository.findByFightNumber(fightNumber);
     }
 }

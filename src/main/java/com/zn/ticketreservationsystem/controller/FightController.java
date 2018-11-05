@@ -8,9 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
+ * 航班controller
+ *
  * @Author: ZN_nick
  * @Date: 2018/11/3 11:52
  * @Version 1.0
@@ -22,10 +27,37 @@ public class FightController {
     @Autowired
     private FightService fightService;
 
-    @PostMapping("/search")
+    @PostMapping("/searchbyairport")
     @ResponseBody
-    public List<Fight> findFightByairPort(String departureAirport,String arrivalAirport ){
+    public List<Fight> findFightByAirport(String departureAirport,String arrivalAirport ){
         List<Fight> result = fightService.findFightByairPort(departureAirport,arrivalAirport);
         return result;
     }
+
+    @PostMapping("/searchbytime")
+    @ResponseBody
+    public List<Fight> findFightByTime(String beginTime,String endTime){
+
+        try {
+            SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date time1 = new Date();
+            Date time2 = new Date();
+            time1 = dateFormat.parse(beginTime);
+            time2 = dateFormat.parse(endTime);
+            List<Fight> result  = fightService.findByTime(time1,time2);
+            return result;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @PostMapping("/searchbyfightnumber")
+    @ResponseBody
+    public List<Fight> findByFightNumber(String fightNumber){
+        List<Fight> result = fightService.findByFightNumber(fightNumber);
+        return result;
+    }
+
+
 }

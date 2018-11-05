@@ -1,8 +1,9 @@
 package com.zn.ticketreservationsystem.service;
 
 import com.zn.ticketreservationsystem.dmoain.entity.Fight;
-import org.springframework.stereotype.Service;
 
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,4 +14,6 @@ import java.util.List;
 
 public interface FightService {
     List<Fight> findFightByairPort(String departureAirport,String arrivalAirport);
+    List<Fight> findByTime(Date beginTime,Date endTime);
+    List<Fight> findByFightNumber(String fightNumber);
 }

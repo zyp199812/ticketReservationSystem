@@ -9,5 +9,6 @@ import com.zn.ticketreservationsystem.dmoain.entity.User;
  */
 public interface BaseService {
     User findUserById(int id);
+    void save(User user);
 
 }

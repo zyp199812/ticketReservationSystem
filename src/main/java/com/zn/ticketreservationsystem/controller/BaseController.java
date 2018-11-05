@@ -50,4 +50,18 @@ public class BaseController {
         return "账号或密码错误";
 
     }
+
+    @PostMapping("/signup")
+    @ResponseBody
+    public String signup(String name,String nickName,String password,String payPsd,String sex){
+        User user = new User();
+        user.setName(name);
+        user.setNickName(nickName);
+        user.setPassword(password);
+        user.setPayPsd(payPsd);
+        user.setSex(sex);
+        baseService.save(user);
+        return "成功";
+
+    }
 }

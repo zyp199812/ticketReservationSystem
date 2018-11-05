@@ -4,6 +4,7 @@ import com.zn.ticketreservationsystem.dmoain.entity.Fight;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,4 +21,21 @@ public interface FightRepository  extends JpaRepository<Fight,String> {
      * @return List<Fight>
      */
     List<Fight> findByDepartureAirportAndArrivalAirport(String departureAirport, String arrivalAirport);
+
+    /**
+     * 根据出发的时间段去寻找航班
+     *
+     * @param beginTime 开始时间
+     * @param endTime 截止时间
+     * @return List<Fight>
+     */
+    List<Fight> findByDepartureTimeBetween(Date beginTime, Date endTime);
+
+    /**
+     * 根据航班号进行查询
+     * @param fightNumber
+     * @return List<Fight>
+     */
+    List<Fight> findByFightNumber(String fightNumber);
 }
+
