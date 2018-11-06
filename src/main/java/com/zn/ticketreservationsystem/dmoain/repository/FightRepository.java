@@ -2,6 +2,8 @@ package com.zn.ticketreservationsystem.dmoain.repository;
 
 import com.zn.ticketreservationsystem.dmoain.entity.Fight;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
@@ -37,5 +39,15 @@ public interface FightRepository  extends JpaRepository<Fight,String> {
      * @return List<Fight>
      */
     List<Fight> findByFightNumber(String fightNumber);
+
+    /**
+     * 根据id进行查找
+     *
+     * @param id
+     * @return
+     */
+
+    @Query(value = "select * FROM fight WHERE id = :id",nativeQuery = true)
+    List<Fight> findById(@Param("id")Integer id);
 }
 

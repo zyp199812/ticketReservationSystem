@@ -59,5 +59,14 @@ public class FightController {
         return result;
     }
 
+    @PostMapping("/searchbyfightId")
+    @ResponseBody
+    public List<Fight> findByFightId(String fightId){
+        int id;
+        id = Integer.parseInt(fightId);
+
+        List<Fight> result = fightService.findByFightId(id);
+        return result;
+    }
 
 }

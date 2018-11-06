@@ -16,4 +16,5 @@ public interface FightService {
     List<Fight> findFightByairPort(String departureAirport,String arrivalAirport);
     List<Fight> findByTime(Date beginTime,Date endTime);
     List<Fight> findByFightNumber(String fightNumber);
+    List<Fight> findByFightId(int id);
 }

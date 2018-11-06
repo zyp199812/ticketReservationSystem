@@ -10,11 +10,11 @@ public interface SeatInformationConstant {
     /**
      * 商务舱
      */
-    String BUSINESS_CLASS="A";
+    char BUSINESS_CLASS='A';
 
     /**
      * 经济舱
      */
-    String ECONOMY_CLASS="B";
+    char ECONOMY_CLASS='B';
 
 }

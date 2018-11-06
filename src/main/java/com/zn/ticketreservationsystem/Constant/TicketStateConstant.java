@@ -11,22 +11,22 @@ public interface TicketStateConstant {
     /**
      * 未支付
      */
-    String UNPAID ="A";
+    char UNPAID ='A';
 
     /**
      * 等待使用
      */
-    String WAIT_USE = "B";
+    char WAIT_USE = 'B';
 
     /**
      * 已完成
      */
-    String COMPLETED = "C";
+    char COMPLETED = 'C';
 
     /**
      * 取消
      */
-    String CANCEL = "D";
+    char CANCEL = 'D';
 
 
 

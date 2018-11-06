@@ -25,7 +25,7 @@ public class Ticket {
     private int id;
 
     /**
-     * 用户id
+     * 用户
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
@@ -52,7 +52,7 @@ public class Ticket {
      * 关联订单id
      */
     @Column(length = 18)
-    private String ticketId;
+    private int ticketId;
 
     /**
      * 订单创建时间

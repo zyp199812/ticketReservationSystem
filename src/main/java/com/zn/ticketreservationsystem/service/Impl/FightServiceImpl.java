@@ -34,4 +34,9 @@ public class FightServiceImpl implements FightService {
     public List<Fight> findByFightNumber(String fightNumber) {
         return fightRepository.findByFightNumber(fightNumber);
     }
+
+    @Override
+    public List<Fight> findByFightId(int id) {
+        return fightRepository.findById(id);
+    }
 }
