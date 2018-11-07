@@ -51,10 +51,10 @@ public class TicketServiceImpl implements TicketService {
                     ticket.setSeatInformation(SeatInformationConstant.BUSINESS_CLASS);
                     ticket.setCreateTime(date);
                     ticket.setState(TicketStateConstant.UNPAID);
-                    ticketRepository.save(ticket);
+                    Integer id = ticketRepository.save(ticket).getId();
                     fight.get(0).setBookedBusinessClassNum(fight.get(0).getBookedBusinessClassNum() + 1);
                     fightRepository.save(fight.get(0));
-                    return "订单创建成功" + date.toString();
+                    return id.toString();
                 }
                 return "抱歉，您选择的舱位已满，请选择其他舱位试试";
 
@@ -79,17 +79,17 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public String pay(int id) {
-        List<Ticket> ticket = ticketRepository.findTicketById(id);
-        ticket.get(0).setState(TicketStateConstant.WAIT_USE);
-        ticketRepository.save(ticket.get(0));
+        Ticket ticket = ticketRepository.findById(id).get();
+        ticket.setState(TicketStateConstant.WAIT_USE);
+        ticketRepository.save(ticket);
         return "支付成功";
     }
 
     @Override
     public String abolish(int id) {
-        List<Ticket> ticket = ticketRepository.findTicketById(id);
-        ticket.get(0).setState(TicketStateConstant.CANCEL);
-        ticketRepository.save(ticket.get(0));
+        Ticket ticket = ticketRepository.findById(id).get();
+        ticket.setState(TicketStateConstant.CANCEL);
+        ticketRepository.save(ticket);
         return "订单取消成功！！！";
     }
 
@@ -99,8 +99,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<Ticket> findById(int id) {
-        return ticketRepository.findTicketById(id);
+    public Ticket findById(int id) {
+        return ticketRepository.findById(id).get();
     }
 
     @Override

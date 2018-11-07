@@ -15,7 +15,6 @@ import java.util.List;
 public interface TicketRepository extends JpaRepository<Ticket,Integer> {
      List<Ticket> findByUser(User user);
 
-     List<Ticket> findTicketById(Integer id);
 
      List<Ticket> findByCreateTimeAndUser(Date date,User user);
 

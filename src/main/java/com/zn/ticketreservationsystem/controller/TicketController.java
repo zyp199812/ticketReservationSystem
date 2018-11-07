@@ -63,10 +63,11 @@ public class TicketController {
         oldTicketId = Integer.parseInt(oldTicketid);
         if (user.isLogin()){
             Date date = new Date();
-            ticketService.createTicket(user,fightID,seatInformation,date);
-            List<Ticket> targetTicket = ticketService.findByCreateTimeAndUser(date,user);
-            Ticket oldTicket = ticketService.findById(id).get(0);
-            oldTicket.setTicketId(targetTicket.get(0).getId());
+            String z = ticketService.createTicket(user,fightID,seatInformation,date);
+            int a = Integer.parseInt(z);
+            Ticket targetTicket = ticketService.findById(a);
+            Ticket oldTicket = ticketService.findById(oldTicketId);
+            oldTicket.setTicketId(targetTicket.getId());
             oldTicket.setState(TicketStateConstant.CANCEL);
             return ticketService.changeTicket(oldTicket);
 

@@ -13,9 +13,8 @@ import java.util.List;
  */
 public interface TicketService {
     List<Ticket> findAllTicketByUser(User user);
-    List<Ticket>
-    findByCreateTimeAndUser(Date date,User user);
-    List<Ticket> findById(int id);
+    List<Ticket> findByCreateTimeAndUser(Date date,User user);
+    Ticket findById(int id);
 
     String createTicket(User user, int fightId, char seatInformation, Date date);
     String pay(int id);

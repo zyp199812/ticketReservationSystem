@@ -27,14 +27,14 @@ public class Ticket {
     /**
      * 用户
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn
     private User user;
 
     /**
      * 航班id
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn
     private Fight fight;
 
